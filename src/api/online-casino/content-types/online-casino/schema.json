@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "online_casinos",
+  "info": {
+    "singularName": "online-casino",
+    "pluralName": "online-casinos",
+    "displayName": "Online Casino"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Rating_Pic": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Rating_Num": {
+      "type": "decimal"
+    },
+    "ReviewLink": {
+      "type": "string"
+    },
+    "Bonus_inf": {
+      "type": "string"
+    }
+  }
+}
