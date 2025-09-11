@@ -9,10 +9,15 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "Name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Logo": {
       "type": "media",
@@ -25,6 +30,16 @@
       ]
     },
     "BonusLink": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Country": {
+      "type": "string"
+    },
+    "Language": {
       "type": "string"
     }
   }
