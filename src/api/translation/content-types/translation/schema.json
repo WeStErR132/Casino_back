@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "translations",
+  "info": {
+    "singularName": "translation",
+    "pluralName": "translations",
+    "displayName": "Translation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "localeKey": {
+      "type": "enumeration",
+      "enum": [
+        "en",
+        "pl",
+        "ru",
+        "ukr",
+        "de",
+        "fr",
+        "it",
+        "bl"
+      ]
+    },
+    "content": {
+      "type": "json"
+    },
+    "flag": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
