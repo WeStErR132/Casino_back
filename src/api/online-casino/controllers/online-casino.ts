@@ -24,7 +24,8 @@ export default factories.createCoreController('api::online-casino.online-casino'
         }
       };
 
-      const data = await strapi.entityService.findMany('api::online-casino.online-casino', query);
+      // Используем новый метод findWithFallback из сервиса
+      const data = await strapi.service('api::online-casino.online-casino').findWithFallback(query);
       
       return { data };
     } catch (error) {

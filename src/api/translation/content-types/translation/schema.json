@@ -15,13 +15,14 @@
       "type": "enumeration",
       "enum": [
         "en",
-        "pl",
-        "ru",
-        "ukr",
-        "de",
-        "fr",
         "it",
-        "bl"
+        "de",
+        "es",
+        "pt",
+        "pl",
+        "be",
+        "fr",
+        "ja"
       ]
     },
     "content": {

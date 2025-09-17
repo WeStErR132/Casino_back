@@ -389,20 +389,52 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    BonusLink: Schema.Attribute.String & Schema.Attribute.Required;
-    Country: Schema.Attribute.String;
+    BonusLink: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Country: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
-    Language: Schema.Attribute.String;
+    Description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Language: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::casino-bonus.casino-bonus'
     >;
-    Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -470,7 +502,7 @@ export interface ApiTranslationTranslation extends Struct.CollectionTypeSchema {
     flag: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localeKey: Schema.Attribute.Enumeration<
-      ['en', 'pl', 'ru', 'ukr', 'de', 'fr', 'it', 'bl']
+      ['en', 'it', 'de', 'es', 'pt', 'pl', 'be', 'fr', 'ja']
     >;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

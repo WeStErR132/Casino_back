@@ -24,7 +24,8 @@ export default factories.createCoreController('api::casino-bonus.casino-bonus', 
         }
       };
 
-      const data = await strapi.entityService.findMany('api::casino-bonus.casino-bonus', query);
+      // Используем новый метод findWithFallback из сервиса
+      const data = await strapi.service('api::casino-bonus.casino-bonus').findWithFallback(query);
       
       return { data };
     } catch (error) {
