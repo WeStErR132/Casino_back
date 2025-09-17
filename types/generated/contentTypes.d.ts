@@ -442,6 +442,57 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCasinoReviewCasinoReview
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'casino_reviews';
+  info: {
+    displayName: 'Casino Review ';
+    pluralName: 'casino-reviews';
+    singularName: 'casino-review';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: false;
+    };
+  };
+  attributes: {
+    Approved: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    Comment: Schema.Attribute.Text;
+    Created: Schema.Attribute.DateTime;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::casino-review.casino-review'
+    > &
+      Schema.Attribute.Private;
+    online_casino: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::online-casino.online-casino'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    Rating: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+          min: 1;
+        },
+        number
+      >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userEmail: Schema.Attribute.Email;
+    userName: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiOnlineCasinoOnlineCasino
   extends Struct.CollectionTypeSchema {
   collectionName: 'online_casinos';
@@ -1026,6 +1077,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::casino-bonus.casino-bonus': ApiCasinoBonusCasinoBonus;
+      'api::casino-review.casino-review': ApiCasinoReviewCasinoReview;
       'api::online-casino.online-casino': ApiOnlineCasinoOnlineCasino;
       'api::translation.translation': ApiTranslationTranslation;
       'plugin::content-releases.release': PluginContentReleasesRelease;
