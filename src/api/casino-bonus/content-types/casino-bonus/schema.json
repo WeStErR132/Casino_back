@@ -72,7 +72,7 @@
         }
       }
     },
-    "Welcome_pack_text": {
+    "Welcome_pack": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -80,7 +80,7 @@
         }
       }
     },
-    "Visit_casino_link": {
+    "Welcome_cash_link": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "General_tab": {
+    "General": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
@@ -114,7 +114,7 @@
       "component": "page-components.info-block",
       "repeatable": true
     },
-    "Payments_tab": {
+    "Payment_info": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
@@ -124,7 +124,7 @@
       "component": "page-components.info-block",
       "repeatable": true
     },
-    "Games_tab": {
+    "Games_info": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
@@ -159,6 +159,16 @@
           "localized": true
         }
       }
+    },
+    "slug": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
     }
   }
 }

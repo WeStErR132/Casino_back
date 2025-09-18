@@ -417,16 +417,13 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    Games_tab: Schema.Attribute.Component<'page-components.info-block', true> &
+    Games_info: Schema.Attribute.Component<'page-components.info-block', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    General_tab: Schema.Attribute.Component<
-      'page-components.info-block',
-      true
-    > &
+    General: Schema.Attribute.Component<'page-components.info-block', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -462,7 +459,7 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    Payments_tab: Schema.Attribute.Component<
+    Payment_info: Schema.Attribute.Component<
       'page-components.info-block',
       true
     > &
@@ -485,16 +482,24 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
         },
         number
       >;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Visit_casino_link: Schema.Attribute.String &
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Welcome_pack_text: Schema.Attribute.String &
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Welcome_cash_link: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Welcome_pack: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
