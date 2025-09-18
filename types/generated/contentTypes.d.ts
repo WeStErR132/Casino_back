@@ -384,22 +384,110 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+<<<<<<< Updated upstream
     BonusLink: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
+=======
+    About_casino: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    BonusLink: Schema.Attribute.String & Schema.Attribute.Required;
+    Country: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    Games_tab: Schema.Attribute.Component<'page-components.info-block', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    General_tab: Schema.Attribute.Component<
+      'page-components.info-block',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Is_new: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Language: Schema.Attribute.String;
+    locale: Schema.Attribute.String;
+>>>>>>> Stashed changes
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::casino-bonus.casino-bonus'
     > &
       Schema.Attribute.Private;
     Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+<<<<<<< Updated upstream
     Name: Schema.Attribute.String;
+=======
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Payments_tab: Schema.Attribute.Component<
+      'page-components.info-block',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+>>>>>>> Stashed changes
     publishedAt: Schema.Attribute.DateTime;
+    Rating_Num: Schema.Attribute.Decimal &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 10;
+          min: 0;
+        },
+        number
+      >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Visit_casino_link: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Welcome_pack_text: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    What_we_dont_like: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    What_we_like: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -432,6 +520,38 @@ export interface ApiOnlineCasinoOnlineCasino
       'images' | 'files' | 'videos' | 'audios'
     >;
     ReviewLink: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTranslationTranslation extends Struct.CollectionTypeSchema {
+  collectionName: 'translations';
+  info: {
+    displayName: 'Translation';
+    pluralName: 'translations';
+    singularName: 'translation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.JSON;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    flag: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localeKey: Schema.Attribute.Enumeration<
+      ['en', 'pl', 'ru', 'ukr', 'de', 'fr', 'it', 'be']
+    >;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::translation.translation'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -949,6 +1069,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::casino-bonus.casino-bonus': ApiCasinoBonusCasinoBonus;
       'api::online-casino.online-casino': ApiOnlineCasinoOnlineCasino;
+      'api::translation.translation': ApiTranslationTranslation;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
