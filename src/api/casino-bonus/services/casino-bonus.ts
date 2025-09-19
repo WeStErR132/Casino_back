@@ -18,9 +18,7 @@ export default factories.createCoreService('api::casino-bonus.casino-bonus', ({ 
       const translatedItems = await strapi.entityService.findMany('api::casino-bonus.casino-bonus', {
         ...params,
         locale: requestedLocale,
-        populate: {
-          Logo: true
-        }
+        populate: '*'
       });
 
       // Если запрошенный язык - английский, просто возвращаем результат
@@ -32,9 +30,7 @@ export default factories.createCoreService('api::casino-bonus.casino-bonus', ({ 
       const defaultItems = await strapi.entityService.findMany('api::casino-bonus.casino-bonus', {
         ...params,
         locale: defaultLocale,
-        populate: {
-          Logo: true
-        }
+        populate: '*'
       });
 
       // Если переведенных карточек меньше чем дефолтных, дополняем

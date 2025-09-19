@@ -19,9 +19,7 @@ export default factories.createCoreController('api::casino-bonus.casino-bonus', 
       const query = {
         ...ctx.query,
         locale: language,
-        populate: {
-          Logo: true
-        }
+        populate: '*'
       };
 
       // Используем новый метод findWithFallback из сервиса
