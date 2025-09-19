@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_page_components_info_blocks",
+  "info": {
+    "displayName": "Info_block"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -9,10 +9,15 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "Name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Rating_Pic": {
       "type": "media",
@@ -25,12 +30,23 @@
       ]
     },
     "Rating_Num": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     },
     "ReviewLink": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "Bonus_inf": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Country": {
+      "type": "string"
+    },
+    "Language": {
       "type": "string"
     }
   }

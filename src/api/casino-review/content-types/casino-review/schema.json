@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "casino_reviews",
+  "info": {
+    "singularName": "casino-review",
+    "pluralName": "casino-reviews",
+    "displayName": "Casino Review "
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "userName": {
+      "type": "string",
+      "required": true
+    },
+    "userEmail": {
+      "type": "email",
+      "required": false
+    },
+    "Rating": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "max": 5
+    },
+    "Comment": {
+      "type": "text"
+    },
+    "Approved": {
+      "type": "boolean",
+      "required": false,
+      "default": false
+    },
+    "online_casino": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::online-casino.online-casino"
+    },
+    "Created": {
+      "type": "datetime"
+    }
+  }
+}
