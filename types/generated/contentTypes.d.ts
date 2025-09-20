@@ -395,13 +395,6 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    BonusLink: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     Country: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -482,9 +475,7 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
         },
         number
       >;
-    slug: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
+    slug: Schema.Attribute.UID<'Name'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
