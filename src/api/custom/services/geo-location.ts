@@ -149,11 +149,8 @@ class GeoLocationServiceImpl implements GeoLocationService {
     try {
       // Очищаем IP от портов и протоколов
       const cleanIP = ip.replace(/^::ffff:/, '').split(':')[0];
-      console.log('Looking up IP:', cleanIP);
-      
       // Сначала пробуем geoip-lite
       const geo = geoip.lookup(cleanIP);
-      console.log('GeoIP result:', geo);
       
       if (geo && geo.country) {
         const country = geo.country;
@@ -166,12 +163,10 @@ class GeoLocationServiceImpl implements GeoLocationService {
           timezone: geo.timezone || 'UTC',
           language
         };
-        console.log('GeoIP location result:', result);
         return result;
       }
 
       // Если geoip-lite не сработал, пробуем внешний API
-      console.log('Trying external API for IP:', cleanIP);
       try {
         const response = await fetch(`http://ip-api.com/json/${cleanIP}?fields=status,message,country,countryCode,region,regionName,city,timezone`);
         
@@ -192,17 +187,14 @@ class GeoLocationServiceImpl implements GeoLocationService {
             timezone: data.timezone || 'UTC',
             language
           };
-          console.log('External API location result:', result);
           return result;
         } else {
-          console.log('External API failed:', data.message || 'Unknown error');
         }
       } catch (externalError) {
         console.error('External API error:', externalError);
       }
 
       // Если ничего не сработало, возвращаем null
-      console.log('Could not determine location for IP:', cleanIP);
       return null;
     } catch (error) {
       console.error('Error getting location by IP:', error);
