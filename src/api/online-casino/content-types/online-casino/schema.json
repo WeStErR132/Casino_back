@@ -158,6 +158,18 @@
         "videos",
         "audios"
       ]
+    },
+    "similar_casinos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::online-casino.online-casino",
+      "inversedBy": "online_casinos"
+    },
+    "online_casinos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::online-casino.online-casino",
+      "mappedBy": "similar_casinos"
     }
   }
 }

@@ -632,6 +632,10 @@ export interface ApiOnlineCasinoOnlineCasino
           localized: true;
         };
       }>;
+    online_casinos: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::online-casino.online-casino'
+    >;
     Payment_info: Schema.Attribute.Component<
       'page-components.info-block',
       true
@@ -655,6 +659,10 @@ export interface ApiOnlineCasinoOnlineCasino
         },
         number
       >;
+    similar_casinos: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::online-casino.online-casino'
+    >;
     slug: Schema.Attribute.UID<'Name'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
