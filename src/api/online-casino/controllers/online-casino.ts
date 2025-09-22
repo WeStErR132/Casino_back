@@ -15,14 +15,16 @@ export default factories.createCoreController('api::online-casino.online-casino'
                      ctx.request.headers['accept-language']?.split(',')[0]?.split('-')[0] || 
                      'en';
       
-      // Добавляем фильтрацию по языку
-      const query = {
+      // Добавляем фильтрацию по языку, сохраняя оригинальные параметры populate
+      const query: any = {
         ...ctx.query,
-        locale: language,
-        populate: {
-          Rating_Pic: true
-        }
+        locale: language
       };
+
+      // Если populate не указан в запросе, используем дефолтный
+      if (!query.populate) {
+        query.populate = '*';
+      }
 
       // Используем новый метод findWithFallback из сервиса
       const data = await strapi.service('api::online-casino.online-casino').findWithFallback(query);

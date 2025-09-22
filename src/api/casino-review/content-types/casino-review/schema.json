@@ -9,11 +9,7 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": false
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "userName": {
       "type": "string",
@@ -36,11 +32,6 @@
       "type": "boolean",
       "required": false,
       "default": false
-    },
-    "online_casino": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::online-casino.online-casino"
     },
     "Created": {
       "type": "datetime"

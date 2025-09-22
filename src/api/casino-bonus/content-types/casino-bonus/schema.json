@@ -39,15 +39,6 @@
         "audios"
       ]
     },
-    "BonusLink": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
     "Description": {
       "type": "text",
       "pluginOptions": {
@@ -161,14 +152,13 @@
       }
     },
     "slug": {
-      "type": "string",
+      "type": "uid",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "required": true,
-      "unique": true
+      "targetField": "Name"
     }
   }
 }

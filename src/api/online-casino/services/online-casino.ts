@@ -6,7 +6,7 @@ import { factories } from '@strapi/strapi';
 
 export default factories.createCoreService('api::online-casino.online-casino', ({ strapi }) => ({
   /**
-   * Получает карточки онлайн казино с фоллбэком на английский язык
+   * Получает карточки онлайн-казино с фоллбэком на английский язык
    * Если переведенных карточек меньше чем английских, дополняет недостающие карточки с английского
    */
   async findWithFallback(params: any = {}) {
@@ -14,13 +14,13 @@ export default factories.createCoreService('api::online-casino.online-casino', (
     const defaultLocale = 'en';
     
     try {
-      // Запрашиваем карточки на запрошенном языке
+      // Запрашиваем карточки на запрошенном языке с правильной популяцией
+      const populateConfig = params.populate || '*';
+      
       const translatedItems = await strapi.entityService.findMany('api::online-casino.online-casino', {
         ...params,
         locale: requestedLocale,
-        populate: {
-          Rating_Pic: true
-        }
+        populate: populateConfig
       });
 
       // Если запрошенный язык - английский, просто возвращаем результат
@@ -28,13 +28,11 @@ export default factories.createCoreService('api::online-casino.online-casino', (
         return translatedItems;
       }
 
-      // Запрашиваем карточки на английском языке
+      // Запрашиваем карточки на английском языке с правильной популяцией
       const defaultItems = await strapi.entityService.findMany('api::online-casino.online-casino', {
         ...params,
         locale: defaultLocale,
-        populate: {
-          Rating_Pic: true
-        }
+        populate: populateConfig
       });
 
       // Если переведенных карточек меньше чем дефолтных, дополняем

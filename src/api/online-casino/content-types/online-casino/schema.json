@@ -17,10 +17,140 @@
   "attributes": {
     "Name": {
       "type": "string",
-      "required": true
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "Rating_Pic": {
+    "slug": {
+      "type": "uid",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "targetField": "Name"
+    },
+    "Rating_Num": {
+      "type": "decimal",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "min": 0,
+      "max": 10
+    },
+    "Description": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Country": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Languages": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Welcome_pack": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Welcome_cash_link": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "What_we_like": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "What_we_dont_like": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "General": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page-components.info-block",
+      "repeatable": true
+    },
+    "Payment_info": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page-components.info-block",
+      "repeatable": true
+    },
+    "Games_info": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page-components.info-block",
+      "repeatable": true
+    },
+    "About_casino": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Is_new": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Logo": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": false,
       "allowedTypes": [
         "images",
@@ -29,25 +159,17 @@
         "audios"
       ]
     },
-    "Rating_Num": {
-      "type": "decimal",
-      "required": true
+    "similar_casinos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::online-casino.online-casino",
+      "inversedBy": "online_casinos"
     },
-    "ReviewLink": {
-      "type": "string",
-      "required": true
-    },
-    "Bonus_inf": {
-      "type": "string"
-    },
-    "Description": {
-      "type": "text"
-    },
-    "Country": {
-      "type": "string"
-    },
-    "Language": {
-      "type": "string"
+    "online_casinos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::online-casino.online-casino",
+      "mappedBy": "similar_casinos"
     }
   }
 }

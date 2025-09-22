@@ -395,13 +395,6 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    BonusLink: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     Country: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -482,9 +475,7 @@ export interface ApiCasinoBonusCasinoBonus extends Struct.CollectionTypeSchema {
         },
         number
       >;
-    slug: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
+    slug: Schema.Attribute.UID<'Name'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -531,11 +522,6 @@ export interface ApiCasinoReviewCasinoReview
   options: {
     draftAndPublish: true;
   };
-  pluginOptions: {
-    i18n: {
-      localized: false;
-    };
-  };
   attributes: {
     Approved: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     Comment: Schema.Attribute.Text;
@@ -549,10 +535,6 @@ export interface ApiCasinoReviewCasinoReview
       'api::casino-review.casino-review'
     > &
       Schema.Attribute.Private;
-    online_casino: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::online-casino.online-casino'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     Rating: Schema.Attribute.Integer &
       Schema.Attribute.Required &
@@ -588,28 +570,132 @@ export interface ApiOnlineCasinoOnlineCasino
     };
   };
   attributes: {
-    Bonus_inf: Schema.Attribute.String;
-    Country: Schema.Attribute.String;
+    About_casino: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Country: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
-    Language: Schema.Attribute.String;
+    Description: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Games_info: Schema.Attribute.Component<'page-components.info-block', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    General: Schema.Attribute.Component<'page-components.info-block', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Is_new: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Languages: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::online-casino.online-casino'
     >;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    Rating_Num: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    Rating_Pic: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
+    Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    online_casinos: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::online-casino.online-casino'
     >;
-    ReviewLink: Schema.Attribute.String & Schema.Attribute.Required;
+    Payment_info: Schema.Attribute.Component<
+      'page-components.info-block',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    Rating_Num: Schema.Attribute.Decimal &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 10;
+          min: 0;
+        },
+        number
+      >;
+    similar_casinos: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::online-casino.online-casino'
+    >;
+    slug: Schema.Attribute.UID<'Name'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Welcome_cash_link: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Welcome_pack: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    What_we_dont_like: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    What_we_like: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 

@@ -13,25 +13,16 @@ export default {
       // Получаем IP адрес из query параметров (отправляется с фронтенда)
       const ip = ctx.query.ip as string;
       
-      console.log('=== Geo-location Controller Debug ===');
-      console.log('IP from query params:', ip);
-      console.log('Query params:', ctx.query);
-      
-      // Если IP не передан, возвращаем ошибку
       if (!ip) {
-        console.log('No IP provided in query params');
         return ctx.badRequest('IP address is required');
       }
 
-      console.log('Looking up location for IP:', ip);
       const locationData = await geoLocationService.getLocationByIP(ip);
 
       if (!locationData) {
-        console.log('Could not determine location for IP:', ip);
         return ctx.badRequest('Unable to determine location');
       }
 
-      console.log('Location data found:', locationData);
       const response: GeoLocationResponse = {
         success: true,
         data: locationData
